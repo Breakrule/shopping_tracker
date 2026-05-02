@@ -11,7 +11,7 @@ class CreateListUseCase {
 
   CreateListUseCase(this._repository);
 
-  Future<void> execute(String name) async {
+  Future<void> execute(String name, {double? targetBudget}) async {
     if (name.trim().isEmpty) {
       throw Exception('List name cannot be empty');
     }
@@ -20,6 +20,7 @@ class CreateListUseCase {
       id: _uuid.v4(),
       name: name.trim(),
       createdAt: DateTime.now(),
+      targetBudget: targetBudget,
     );
 
     await _repository.createList(newList);

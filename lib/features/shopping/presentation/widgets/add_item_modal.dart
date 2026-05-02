@@ -1,6 +1,9 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import '../providers/items_notifier.dart';
+import '../providers/usecase_providers.dart';
 
 /// Responsibility: Bottom sheet form to add a new item to a shopping list.
 
@@ -40,19 +43,38 @@ class _AddItemFormState extends ConsumerState<AddItemForm> {
     'Other',
   ];
   late String _selectedCategory;
+  double? _suggestedPrice;
+  Timer? _debounce;
 
   @override
   void initState() {
     super.initState();
     _selectedCategory = _categories.first;
+    _nameController.addListener(_onNameChanged);
   }
 
   @override
   void dispose() {
+    _nameController.removeListener(_onNameChanged);
     _nameController.dispose();
     _quantityController.dispose();
     _priceController.dispose();
+    _debounce?.cancel();
     super.dispose();
+  }
+
+  void _onNameChanged() {
+    if (_debounce?.isActive ?? false) _debounce!.cancel();
+    _debounce = Timer(const Duration(milliseconds: 500), () async {
+      if (_nameController.text.trim().isEmpty) {
+        setState(() => _suggestedPrice = null);
+        return;
+      }
+      final price = await ref.read(getSuggestedPriceUseCaseProvider).execute(_nameController.text);
+      if (mounted) {
+        setState(() => _suggestedPrice = price);
+      }
+    });
   }
 
   void _submit() {
@@ -121,10 +143,39 @@ class _AddItemFormState extends ConsumerState<AddItemForm> {
                 ),
                 const SizedBox(width: 16),
                 Expanded(
-                  child: TextFormField(
-                    controller: _priceController,
-                    decoration: const InputDecoration(labelText: 'Price (Optional)'),
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (_suggestedPrice != null)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 4.0),
+                          child: InkWell(
+                            onTap: () {
+                              _priceController.text = _suggestedPrice!.toStringAsFixed(0);
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Text(
+                                'Last: Rp ${NumberFormat('#,###').format(_suggestedPrice)}',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      TextFormField(
+                        controller: _priceController,
+                        decoration: const InputDecoration(labelText: 'Price (Optional)'),
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      ),
+                    ],
                   ),
                 ),
               ],

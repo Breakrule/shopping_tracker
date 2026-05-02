@@ -20,11 +20,11 @@ class ShoppingListNotifier extends AsyncNotifier<List<ShoppingList>> {
     return lists;
   }
 
-  Future<void> createList(String name) async {
+  Future<void> createList(String name, {double? targetBudget}) async {
     state = const AsyncLoading();
     state = await AsyncValue.guard(() async {
       final useCase = ref.read(createListUseCaseProvider);
-      await useCase.execute(name);
+      await useCase.execute(name, targetBudget: targetBudget);
       return _fetchLists();
     });
   }

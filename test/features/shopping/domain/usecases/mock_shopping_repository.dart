@@ -42,4 +42,9 @@ class MockShoppingRepository implements ShoppingRepository {
       items[index] = item;
     }
   }
+
+  @override
+  Future<List<Item>> getAllItemsHistory(String itemName) async {
+    return items.where((i) => i.name.toLowerCase() == itemName.toLowerCase()).toList();
+  }
 }

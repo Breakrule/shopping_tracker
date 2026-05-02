@@ -64,4 +64,13 @@ class ShoppingRepositoryImpl implements ShoppingRepository {
   Future<void> deleteItem(String itemId) async {
     await _itemBox.delete(itemId);
   }
+
+  @override
+  Future<List<Item>> getAllItemsHistory(String itemName) async {
+    final searchName = itemName.trim().toLowerCase();
+    return _itemBox.values
+        .where((m) => m.name.toLowerCase() == searchName && m.price != null)
+        .map((m) => m.toEntity())
+        .toList();
+  }
 }

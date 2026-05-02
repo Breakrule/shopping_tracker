@@ -17,10 +17,14 @@ class ShoppingListModel extends HiveObject {
   @HiveField(2)
   final DateTime createdAt;
 
+  @HiveField(3)
+  final double? targetBudget;
+
   ShoppingListModel({
     required this.id,
     required this.name,
     required this.createdAt,
+    this.targetBudget,
   });
 
   factory ShoppingListModel.fromEntity(ShoppingList entity) {
@@ -28,6 +32,7 @@ class ShoppingListModel extends HiveObject {
       id: entity.id,
       name: entity.name,
       createdAt: entity.createdAt,
+      targetBudget: entity.targetBudget,
     );
   }
 
@@ -36,6 +41,7 @@ class ShoppingListModel extends HiveObject {
       id: id,
       name: name,
       createdAt: createdAt,
+      targetBudget: targetBudget,
     );
   }
 }
