@@ -1,6 +1,7 @@
 /// Responsibility: Pure domain entity for a Shopping Item.
 /// Why: Decouples business logic from persistence framework (Hive).
 /// Tradeoff: Requires mapping to/from Hive models in the data layer.
+library;
 
 class Item {
   final String id;

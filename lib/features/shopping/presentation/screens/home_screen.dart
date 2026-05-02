@@ -48,7 +48,7 @@ class HomeScreen extends ConsumerWidget {
                         height: 200,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.white.withOpacity(0.1),
+                          color: Colors.white.withValues(alpha: 0.1),
                         ),
                       ),
                     ),
@@ -60,7 +60,7 @@ class HomeScreen extends ConsumerWidget {
                         height: 140,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.white.withOpacity(0.1),
+                          color: Colors.white.withValues(alpha: 0.1),
                         ),
                       ),
                     ),
@@ -79,7 +79,7 @@ class HomeScreen extends ConsumerWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.shopping_bag_outlined, size: 80, color: theme.colorScheme.primary.withOpacity(0.5)),
+                          Icon(Icons.shopping_bag_outlined, size: 80, color: theme.colorScheme.primary.withValues(alpha: 0.5)),
                           const SizedBox(height: 16),
                           Text(
                             'No shopping lists yet.',
@@ -127,13 +127,13 @@ class HomeScreen extends ConsumerWidget {
                                 gradient: LinearGradient(
                                   colors: [
                                     theme.cardColor,
-                                    theme.cardColor.withOpacity(0.8),
+                                    theme.cardColor.withValues(alpha: 0.8),
                                   ],
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
                                 ),
                                 border: Border.all(
-                                  color: Colors.white.withOpacity(0.05),
+                                  color: Colors.white.withValues(alpha: 0.05),
                                   width: 1,
                                 ),
                               ),
@@ -143,7 +143,7 @@ class HomeScreen extends ConsumerWidget {
                                   Container(
                                     padding: const EdgeInsets.all(12),
                                     decoration: BoxDecoration(
-                                      color: theme.colorScheme.primary.withOpacity(0.1),
+                                      color: theme.colorScheme.primary.withValues(alpha: 0.1),
                                       shape: BoxShape.circle,
                                     ),
                                     child: Icon(

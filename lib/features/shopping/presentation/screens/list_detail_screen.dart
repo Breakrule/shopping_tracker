@@ -67,7 +67,7 @@ class ListDetailScreen extends ConsumerWidget {
                       child: Icon(
                         Icons.shopping_cart_outlined,
                         size: 150,
-                        color: Colors.white.withOpacity(0.05),
+                        color: Colors.white.withValues(alpha: 0.05),
                       ),
                     ),
                   ],
@@ -86,7 +86,7 @@ class ListDetailScreen extends ConsumerWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.add_shopping_cart, size: 80, color: theme.colorScheme.primary.withOpacity(0.5)),
+                          Icon(Icons.add_shopping_cart, size: 80, color: theme.colorScheme.primary.withValues(alpha: 0.5)),
                           const SizedBox(height: 16),
                           Text(
                             'No items yet.',
@@ -114,7 +114,7 @@ class ListDetailScreen extends ConsumerWidget {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          color: item.isPurchased ? theme.cardColor.withOpacity(0.6) : theme.cardColor,
+                          color: item.isPurchased ? theme.cardColor.withValues(alpha: 0.6) : theme.cardColor,
                           child: ListTile(
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                             leading: Checkbox(
@@ -140,7 +140,7 @@ class ListDetailScreen extends ConsumerWidget {
                                   Container(
                                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                                     decoration: BoxDecoration(
-                                      color: theme.colorScheme.primary.withOpacity(0.15),
+                                      color: theme.colorScheme.primary.withValues(alpha: 0.15),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Text(
