@@ -21,7 +21,11 @@ class ListDetailScreen extends ConsumerWidget {
     final itemsAsync = ref.watch(itemsProvider(listId));
     final total = ref.read(itemsProvider(listId).notifier).calculateTotal();
     final theme = Theme.of(context);
-    final currencyFormatter = NumberFormat.currency(symbol: '\$');
+    final currencyFormatter = NumberFormat.currency(
+      locale: 'id_ID',
+      symbol: 'Rp ',
+      decimalDigits: 0,
+    );
 
     return Scaffold(
       body: CustomScrollView(
@@ -125,13 +129,34 @@ class ListDetailScreen extends ConsumerWidget {
                                 ref.read(itemsProvider(listId).notifier).togglePurchased(item);
                               },
                             ),
-                            title: Text(
-                              item.name,
-                              style: theme.textTheme.titleMedium?.copyWith(
-                                decoration: item.isPurchased ? TextDecoration.lineThrough : null,
-                                color: item.isPurchased ? Colors.grey : Colors.white,
-                                fontWeight: FontWeight.w600,
-                              ),
+                            title: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    item.name,
+                                    style: theme.textTheme.titleMedium?.copyWith(
+                                      decoration: item.isPurchased ? TextDecoration.lineThrough : null,
+                                      color: item.isPurchased ? Colors.grey : Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                  decoration: BoxDecoration(
+                                    color: Colors.blueGrey.withValues(alpha: 0.1),
+                                    borderRadius: BorderRadius.circular(6),
+                                    border: Border.all(color: Colors.blueGrey.withValues(alpha: 0.2)),
+                                  ),
+                                  child: Text(
+                                    item.category,
+                                    style: theme.textTheme.labelSmall?.copyWith(
+                                      color: Colors.blueGrey,
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                             subtitle: Padding(
                               padding: const EdgeInsets.only(top: 4.0),

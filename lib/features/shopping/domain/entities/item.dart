@@ -10,6 +10,7 @@ class Item {
   final int quantity;
   final double? price;
   final bool isPurchased;
+  final String category;
 
   Item({
     required this.id,
@@ -18,6 +19,7 @@ class Item {
     this.quantity = 1,
     this.price,
     this.isPurchased = false,
+    this.category = 'Other',
   });
 
   Item copyWith({
@@ -27,6 +29,7 @@ class Item {
     int? quantity,
     double? price,
     bool? isPurchased,
+    String? category,
   }) {
     return Item(
       id: id ?? this.id,
@@ -35,6 +38,7 @@ class Item {
       quantity: quantity ?? this.quantity,
       price: price ?? this.price,
       isPurchased: isPurchased ?? this.isPurchased,
+      category: category ?? this.category,
     );
   }
 }

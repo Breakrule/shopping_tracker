@@ -16,6 +16,7 @@ class AddItemUseCase {
     required String name,
     int quantity = 1,
     double? price,
+    String category = 'Other',
   }) async {
     if (name.trim().isEmpty) {
       throw Exception('Item name cannot be empty');
@@ -31,6 +32,7 @@ class AddItemUseCase {
       quantity: quantity,
       price: price,
       isPurchased: false,
+      category: category,
     );
 
     await _repository.addItem(newItem);

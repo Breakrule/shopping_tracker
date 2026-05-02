@@ -26,6 +26,9 @@ class ItemModel extends HiveObject {
   @HiveField(5)
   final bool isPurchased;
 
+  @HiveField(6)
+  final String category;
+
   ItemModel({
     required this.id,
     required this.listId,
@@ -33,6 +36,7 @@ class ItemModel extends HiveObject {
     required this.quantity,
     this.price,
     required this.isPurchased,
+    required this.category,
   });
 
   factory ItemModel.fromEntity(Item entity) {
@@ -43,6 +47,7 @@ class ItemModel extends HiveObject {
       quantity: entity.quantity,
       price: entity.price,
       isPurchased: entity.isPurchased,
+      category: entity.category,
     );
   }
 
@@ -54,6 +59,7 @@ class ItemModel extends HiveObject {
       quantity: quantity,
       price: price,
       isPurchased: isPurchased,
+      category: category,
     );
   }
 }

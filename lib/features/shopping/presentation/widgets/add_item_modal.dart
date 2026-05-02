@@ -31,6 +31,22 @@ class _AddItemFormState extends ConsumerState<AddItemForm> {
   final _quantityController = TextEditingController(text: '1');
   final _priceController = TextEditingController();
 
+  final List<String> _categories = [
+    'Basic Needs',
+    'Food',
+    'Toiletries',
+    'Household',
+    'Electronic',
+    'Other',
+  ];
+  late String _selectedCategory;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedCategory = _categories.first;
+  }
+
   @override
   void dispose() {
     _nameController.dispose();
@@ -45,6 +61,7 @@ class _AddItemFormState extends ConsumerState<AddItemForm> {
             name: _nameController.text,
             quantity: int.parse(_quantityController.text),
             price: double.tryParse(_priceController.text),
+            category: _selectedCategory,
           );
       Navigator.pop(context);
     }
@@ -70,6 +87,23 @@ class _AddItemFormState extends ConsumerState<AddItemForm> {
               autofocus: true,
               validator: (val) => val == null || val.isEmpty ? 'Required' : null,
             ),
+            const SizedBox(height: 16),
+            DropdownButtonFormField<String>(
+              initialValue: _selectedCategory,
+              decoration: const InputDecoration(labelText: 'Category'),
+              items: _categories.map((cat) {
+                return DropdownMenuItem(
+                  value: cat,
+                  child: Text(cat),
+                );
+              }).toList(),
+              onChanged: (val) {
+                if (val != null) {
+                  setState(() => _selectedCategory = val);
+                }
+              },
+            ),
+            const SizedBox(height: 16),
             Row(
               children: [
                 Expanded(

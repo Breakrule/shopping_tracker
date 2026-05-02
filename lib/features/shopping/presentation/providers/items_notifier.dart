@@ -21,6 +21,7 @@ class ItemsNotifier extends FamilyAsyncNotifier<List<Item>, String> {
     required String name,
     int quantity = 1,
     double? price,
+    String category = 'Other',
   }) async {
     state = const AsyncLoading();
     state = await AsyncValue.guard(() async {
@@ -30,6 +31,7 @@ class ItemsNotifier extends FamilyAsyncNotifier<List<Item>, String> {
         name: name,
         quantity: quantity,
         price: price,
+        category: category,
       );
       return _fetchItems(arg);
     });
