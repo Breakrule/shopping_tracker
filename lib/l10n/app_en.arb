@@ -1,0 +1,53 @@
+{
+  "appTitle": "Monthly Shop Tracker",
+  "homeTitle": "My Shopping Lists",
+  "settingsTitle": "Settings",
+  "noListsYet": "Your shopping journey starts here",
+  "noListsSub": "Create your first list to organize your monthly shopping with precision.",
+  "addList": "Create New List",
+  "listName": "List Name (e.g., May 2024)",
+  "budget": "Monthly Budget (Optional)",
+  "cancel": "Cancel",
+  "create": "Create",
+  "deleteList": "Delete List?",
+  "deleteListConfirm": "This will delete all items in this list. This action cannot be undone.",
+  "delete": "Delete",
+  "items": "items",
+  "totalSpent": "Total Spent",
+  "overBudget": "OVER BUDGET",
+  "insights": "Spending Insights",
+  "aisleView": "Aisle View",
+  "listView": "List View",
+  "noItemsYet": "This list is empty",
+  "noItemsSub": "Add items you need to buy and we'll help you track your spending.",
+  "newItem": "New Item",
+  "itemName": "Item Name",
+  "category": "Category",
+  "quantity": "Quantity",
+  "price": "Price",
+  "suggestion": "Suggestion: Rp {price}",
+  "@suggestion": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "addToList": "Add to List",
+  "appearance": "Appearance",
+  "themeMode": "Theme Mode",
+  "categories": "Categories",
+  "addCustomCategory": "Add Custom Category",
+  "development": "Development",
+  "seedData": "Seed Dummy Data",
+  "dummyDataSuccess": "Dummy data seeded successfully!",
+  "systemDefault": "System Default",
+  "lightMode": "Light Mode",
+  "darkMode": "Dark Mode",
+  "selectTheme": "Select Theme",
+  "newCategory": "New Category",
+  "categoryName": "Category name",
+  "add": "Add",
+  "required": "Required",
+  "minQuantity": "Min 1"
+}

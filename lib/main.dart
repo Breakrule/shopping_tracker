@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:monthly_shop_tracker/l10n/app_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'features/settings/data/models/app_settings_model.dart';
 import 'features/settings/presentation/providers/settings_provider.dart';
 import 'features/shopping/data/models/item_model.dart';
@@ -60,38 +63,101 @@ class MyApp extends ConsumerWidget {
       themeMode: themeMode,
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+        textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme).copyWith(
+          headlineLarge: GoogleFonts.outfit(fontWeight: FontWeight.bold, letterSpacing: -1),
+          headlineMedium: GoogleFonts.outfit(fontWeight: FontWeight.bold, letterSpacing: -0.5),
+          titleLarge: GoogleFonts.outfit(fontWeight: FontWeight.w600),
+        ),
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF6366F1), // Vibrant Indigo
+          seedColor: const Color(0xFF6366F1),
           brightness: Brightness.dark,
+          primary: const Color(0xFF818CF8),
           surface: const Color(0xFF1E1E2C),
+          onSurface: Colors.white,
         ),
         scaffoldBackgroundColor: const Color(0xFF0F0F17),
         useMaterial3: true,
-        appBarTheme: const AppBarTheme(
+        appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          centerTitle: true,
+          centerTitle: false,
           scrolledUnderElevation: 0,
+          titleTextStyle: GoogleFonts.inter(
+            fontSize: 24,
+            fontWeight: FontWeight.w900,
+            color: Colors.white,
+            letterSpacing: -0.5,
+          ),
         ),
         cardTheme: CardThemeData(
           color: const Color(0xFF1E1E2C),
-          elevation: 8,
-          shadowColor: Colors.black45,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        ),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Color(0xFF6366F1),
-          foregroundColor: Colors.white,
-          elevation: 4,
+          elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(16)),
+            borderRadius: BorderRadius.circular(24),
+            side: BorderSide(
+              color: Colors.white.withValues(alpha: 0.05),
+              width: 1,
+            ),
+          ),
+        ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: const Color(0xFF6366F1),
+          foregroundColor: Colors.white,
+          elevation: 8,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
           ),
         ),
       ),
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF6366F1)),
+        brightness: Brightness.light,
+        textTheme: GoogleFonts.interTextTheme(ThemeData.light().textTheme).copyWith(
+          headlineLarge: GoogleFonts.outfit(fontWeight: FontWeight.bold, letterSpacing: -1),
+          headlineMedium: GoogleFonts.outfit(fontWeight: FontWeight.bold, letterSpacing: -0.5),
+          titleLarge: GoogleFonts.outfit(fontWeight: FontWeight.w600),
+        ),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF6366F1),
+          primary: const Color(0xFF6366F1),
+          surface: const Color(0xFFF8F9FE),
+        ),
+        scaffoldBackgroundColor: const Color(0xFFF8F9FE),
         useMaterial3: true,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          centerTitle: false,
+          scrolledUnderElevation: 0,
+          titleTextStyle: GoogleFonts.inter(
+            fontSize: 24,
+            fontWeight: FontWeight.w900,
+            color: const Color(0xFF1A1A1A),
+            letterSpacing: -0.5,
+          ),
+          iconTheme: const IconThemeData(color: Color(0xFF1A1A1A)),
+        ),
+        cardTheme: CardThemeData(
+          color: Colors.white,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
+            side: BorderSide(
+              color: const Color(0xFF6366F1).withValues(alpha: 0.05),
+              width: 1,
+            ),
+          ),
+        ),
       ),
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('id'),
+      ],
       home: const SplashScreen(),
       debugShowCheckedModeBanner: false,
     );

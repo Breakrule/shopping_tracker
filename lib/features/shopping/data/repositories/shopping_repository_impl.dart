@@ -73,4 +73,34 @@ class ShoppingRepositoryImpl implements ShoppingRepository {
         .map((m) => m.toEntity())
         .toList();
   }
+
+  @override
+  Future<List<String>> getUniqueItemNames(String query) async {
+    final search = query.trim().toLowerCase();
+    if (search.isEmpty) return [];
+
+    final names = _itemBox.values
+        .where((m) => m.name.toLowerCase().contains(search))
+        .map((m) => m.name)
+        .toSet()
+        .toList();
+    
+    // Sort by name
+    names.sort();
+    return names;
+  }
+
+  @override
+  Future<Item?> getLastItemDetails(String itemName) async {
+    final search = itemName.trim().toLowerCase();
+    final history = _itemBox.values
+        .where((m) => m.name.toLowerCase() == search)
+        .toList();
+    
+    if (history.isEmpty) return null;
+
+    // ItemModel doesn't have a timestamp, but Hive values are usually in insertion order.
+    // We return the last one added.
+    return history.last.toEntity();
+  }
 }

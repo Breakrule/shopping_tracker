@@ -47,4 +47,21 @@ class MockShoppingRepository implements ShoppingRepository {
   Future<List<Item>> getAllItemsHistory(String itemName) async {
     return items.where((i) => i.name.toLowerCase() == itemName.toLowerCase()).toList();
   }
+
+  @override
+  Future<List<String>> getUniqueItemNames(String query) async {
+    return items
+        .where((i) => i.name.toLowerCase().contains(query.toLowerCase()))
+        .map((i) => i.name)
+        .toSet()
+        .toList();
+  }
+
+  @override
+  Future<Item?> getLastItemDetails(String itemName) async {
+    final matches = items
+        .where((i) => i.name.toLowerCase() == itemName.toLowerCase())
+        .toList();
+    return matches.isEmpty ? null : matches.last;
+  }
 }

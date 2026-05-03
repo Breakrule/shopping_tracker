@@ -1,0 +1,53 @@
+{
+  "appTitle": "Pelacak Belanja Bulanan",
+  "homeTitle": "Daftar Belanjaku",
+  "settingsTitle": "Pengaturan",
+  "noListsYet": "Perjalanan belanjamu dimulai di sini",
+  "noListsSub": "Buat daftar pertamamu untuk mengatur belanja bulanan dengan presisi.",
+  "addList": "Buat Daftar Baru",
+  "listName": "Nama Daftar (misal: Mei 2024)",
+  "budget": "Anggaran Bulanan (Opsional)",
+  "cancel": "Batal",
+  "create": "Buat",
+  "deleteList": "Hapus Daftar?",
+  "deleteListConfirm": "Ini akan menghapus semua item dalam daftar ini. Tindakan ini tidak dapat dibatalkan.",
+  "delete": "Hapus",
+  "items": "item",
+  "totalSpent": "Total Pengeluaran",
+  "overBudget": "MELEBIHI ANGGARAN",
+  "insights": "Wawasan Pengeluaran",
+  "aisleView": "Tampilan Kategori",
+  "listView": "Tampilan Daftar",
+  "noItemsYet": "Daftar ini kosong",
+  "noItemsSub": "Tambah item yang perlu dibeli dan kami akan membantu melacak pengeluaranmu.",
+  "newItem": "Item Baru",
+  "itemName": "Nama Item",
+  "category": "Kategori",
+  "quantity": "Jumlah",
+  "price": "Harga",
+  "suggestion": "Saran: Rp {price}",
+  "@suggestion": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "addToList": "Tambah ke Daftar",
+  "appearance": "Tampilan",
+  "themeMode": "Mode Tema",
+  "categories": "Kategori",
+  "addCustomCategory": "Tambah Kategori Kustom",
+  "development": "Pengembangan",
+  "seedData": "Isi Data Dummy",
+  "dummyDataSuccess": "Data dummy berhasil diisi!",
+  "systemDefault": "Default Sistem",
+  "lightMode": "Mode Terang",
+  "darkMode": "Mode Gelap",
+  "selectTheme": "Pilih Tema",
+  "newCategory": "Kategori Baru",
+  "categoryName": "Nama kategori",
+  "add": "Tambah",
+  "required": "Wajib diisi",
+  "minQuantity": "Min 1"
+}

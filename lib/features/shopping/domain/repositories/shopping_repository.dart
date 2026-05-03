@@ -14,4 +14,6 @@ abstract class ShoppingRepository {
   Future<void> updateItem(Item item);
   Future<void> deleteItem(String itemId);
   Future<List<Item>> getAllItemsHistory(String itemName);
+  Future<List<String>> getUniqueItemNames(String query);
+  Future<Item?> getLastItemDetails(String itemName);
 }

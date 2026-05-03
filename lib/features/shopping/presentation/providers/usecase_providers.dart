@@ -7,6 +7,8 @@ import '../../domain/usecases/export_list_usecase.dart';
 import '../../domain/usecases/get_suggested_price_usecase.dart';
 import '../../domain/usecases/toggle_item_purchased_usecase.dart';
 import '../../domain/usecases/seed_data_usecase.dart';
+import '../../domain/usecases/get_item_suggestions_usecase.dart';
+import '../../domain/usecases/get_item_defaults_usecase.dart';
 import 'providers.dart';
 
 final createListUseCaseProvider = Provider((ref) {
@@ -39,4 +41,12 @@ final getSuggestedPriceUseCaseProvider = Provider((ref) {
 
 final seedDataUseCaseProvider = Provider((ref) {
   return SeedDataUseCase(ref.read(shoppingRepositoryProvider));
+});
+
+final getItemSuggestionsUseCaseProvider = Provider((ref) {
+  return GetItemSuggestionsUseCase(ref.read(shoppingRepositoryProvider));
+});
+
+final getItemDefaultsUseCaseProvider = Provider((ref) {
+  return GetItemDefaultsUseCase(ref.read(shoppingRepositoryProvider));
 });
