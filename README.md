@@ -9,15 +9,17 @@ A production-ready, offline-first Flutter application designed to track shopping
 ## ✨ Features
 
 - **Multi-List Management**: Create and organize multiple shopping lists for different stores or categories.
-- **Itemized Tracking**: Add items with custom quantities and optional pricing.
+- **Permanent Aisle View**: Items are permanently grouped by category for a cleaner, highly organized shopping experience.
+- **Smart Autocomplete & Price History**: Predictive item entry and historical price tracking.
 - **Smart Totals**: Automatic calculation of total expenses based on "purchased" items.
 - **Offline-First**: Fully functional without an internet connection using **Hive NoSQL** storage.
-- **Modern UI/UX**:
-  - Sleek dark mode by default.
-  - Vibrant Indigo/Purple gradient themes.
-  - Dynamic `SliverAppBar` headers.
-  - Responsive card-based layout.
-  - Interactive modal forms with validation.
+- **Localization (i18n)**: Full support for English and Indonesian.
+- **Premium UI/UX**:
+  - Sophisticated **Glassmorphism** (frosted glass) effects on headers and modals.
+  - Dynamic **Animated Mesh Gradients** for a vibrant, living aesthetic.
+  - **Fluid Micro-Interactions**: Smooth entrance animations and satisfying tactile feedback.
+  - **Completion Celebration**: Automatic confetti bursts when a list is fully completed under budget.
+  - Refined typography using **Outfit** for headlines and **Inter** for data readability.
 
 ## 🏗️ Architecture
 
